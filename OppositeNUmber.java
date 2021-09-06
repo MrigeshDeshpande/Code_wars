@@ -1,6 +1,7 @@
 package Competetive_Coding_Initiation;
 
-public class OppositeNUmber {
+public class OppositeNUmber
+{
     public static int oppositeNum(int number)
     {
         return number*= -1;
