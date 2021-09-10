@@ -1,0 +1,171 @@
+Number of people in the bus
+
+There is a bus moving in the city, and it takes and drop some people in each bus stop.
+You are provided with a list (or array) of integer arrays (or tuples). Each integer array has two items which represent number of people
+get into bus (The first item) and number of people get off the bus (The second item) in a bus stop.
+Your task is to return number of people who are still in the bus after the last bus station (after the last array)
+Even though it is the last bus stop, the bus is not empty and some people are still in the bus, and they are probably sleeping there :D
+Take a look on the test cases.
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the return integer can't be negative.
+The second value in the first integer array is 0, since the bus is empty in the first bus stop.
+
+def number(bus_stops):
+        people = 0
+        for items in bus_stops:
+        people += items[0]
+        people -= items[1]
+
+        return people
+
+descriptive solution ->
+====================
+
+def number(arr):
+  people_in = 0
+  people_out = 0
+  for stops in arr:
+    people_in += stops[0]
+    people_out += stops[1]
+  return people_in - people_out
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+2]
+Jaden Smith, the son of Will Smith, is the star of films such as The Karate Kid (2010) and After Earth (2013).
+Jaden is also known for some of his philosophy that he delivers via Twitter. When writing on Twitter,
+he is known for almost always capitalizing every word. For simplicity, you'll have to capitalize each word,
+check out how contractions are expected to be in the example below.
+Your task is to convert strings to how they would be written by Jaden Smith.
+The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
+
+Example:
+Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+solution=>
+
+                                                                                                                                                     def to_jaden_case(string):
+## First, we are going to convert the string input into a list by using split(). We assign the array to textArr.
+                                                                                                                                                     textArr = string.split(" ")
+## We will create another variable called jadenCaseArr and assign it an empty list. This list will contain every word from string but capitalized.
+                                                                                                                                                     jadenCaseArr = []
+                                                                                                                                                     for word in textArr:
+                                                                                                                                                     jadenCaseArr.append(word.capitalize())
+## Next, we will use the for loop to iterate through textArr and add each word into jadenCaseArr. We capitalize each word using capitalize().
+                                                                                                                                                     return " ".join(jadenCaseArr)
+## Finally, we convert the list back into a string using join() and return the string.
+
+
+ALTERNATE SOLUTION
+==================>
+import string
+
+def toJadenCase(NonJadenStrings):
+    return string.capwords(NonJadenStrings)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+3]
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+
+Solution->
+l=[1,2,'a','b']
+def filter_list(l):
+    new_list = []
+    for x in l:
+        if type(x) == int:
+            new_list.append(x)
+    return new_list
+
+print(filter_list(l))
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4]
+Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order.
+Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+Input: 145263 Output: 654321
+Input: 123456789 Output: 987654321
+
+
+Solution->
+==========
+
+def Descending_Order(num):
+    list=[]
+    while num/10 !=0 :
+        list.append(num%10)
+        num=num/10
+    list.append(num)
+    list.sort()
+    print list
+    numb=0;
+    i=0
+    print i
+    while i <len(list):
+        numb+=list[i]*pow(10,i)
+        i+=1
+        print numb
+    return numb
+
+ALTERNATE SOLUTION
+==================>
+
+    def Descending_Order(num):
+        a = sorted(str(num))
+        a.reverse()
+        a = int(''.join(a))
+        return a
+ALTERNATE SOLUTION
+==================>
+        def Descending_Order(num):
+            l = list(str(num))
+            l.sort(reverse=True)
+            return int("".join(l))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5]
+Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+
+Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+
+Examples:
+
+Testing: [0, 0, 0, 1] ==> 1
+Testing: [0, 0, 1, 0] ==> 2
+Testing: [0, 1, 0, 1] ==> 5
+Testing: [1, 0, 0, 1] ==> 9
+Testing: [0, 0, 1, 0] ==> 2
+Testing: [0, 1, 1, 0] ==> 6
+Testing: [1, 1, 1, 1] ==> 15
+Testing: [1, 0, 1, 1] ==> 11
+
+Solution->
+==========
+def binary_array_to_number(arr):
+    i = 0
+    n = len(arr)-1
+    num = 0
+    while n >= 0:
+        num += arr[n]*pow(2, i)
+        i += 1
+        n -= 1
+    return num
+
+
+ ALTERNATE SOLUTION
+ ==================>
+            def binary_array_to_number(arr):
+                  l = len(arr)
+                  power = 0
+                 res = 0
+                 for i in range(l, 0, -1):
+                     res += arr[i-1]*(2**power)
+                     power += 1
+                 return res
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
